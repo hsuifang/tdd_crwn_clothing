@@ -17,5 +17,15 @@ describe("App", () => {
         expect(item).toHaveTextContent(lists[idx]);
       });
     });
+
+    test.only("has image in category", () => {
+      render(<App />);
+      const category = screen.getAllByTestId("category");
+      category.forEach((item) => {
+        expect(item.children[0].className.includes("background-image")).toBe(
+          true
+        );
+      });
+    });
   });
 });
