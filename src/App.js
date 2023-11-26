@@ -1,7 +1,12 @@
-import CategoryMenu from "./components/category-menu/CategoryMenu";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
 
 const App = () => {
-  return <CategoryMenu data-testid="category-component" />;
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 };
 
 export default App;
