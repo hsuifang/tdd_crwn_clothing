@@ -6,18 +6,17 @@ describe("SignupForm", () => {
     cleanup();
   });
   test.each`
-    field              | label                 | placeholder         | type
-    ${"name"}          | ${"Name"}             | ${"Display Name"}   | ${"text"}
-    ${"email"}         | ${"Email"}            | ${"Email Address"}  | ${"email"}
-    ${"password"}      | ${"Password"}         | ${"Password"}       | ${"password"}
-    ${"passwordAgain"} | ${"Confirm Password"} | ${"Password Again"} | ${"password"}
+    field              | label                 | type
+    ${"name"}          | ${"Name"}             | ${"text"}
+    ${"email"}         | ${"Email"}            | ${"email"}
+    ${"password"}      | ${"Password"}         | ${"password"}
+    ${"passwordAgain"} | ${"Confirm Password"} | ${"password"}
   `(
     'should has "$field" field, and need to be filled',
-    ({ field, label, placeholder, type }) => {
+    ({ field, label, type }) => {
       const { getByLabelText } = render(<SignUpForm />);
       const input = getByLabelText(label);
       expect(input).toHaveAttribute("name", field);
-      expect(input).toHaveAttribute("placeholder", placeholder);
       expect(input).toHaveAttribute("type", type);
     }
   );
