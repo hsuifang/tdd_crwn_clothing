@@ -19,6 +19,11 @@ describe("navigation", () => {
     expect(links[0].href).toContain("/");
     expect(links[0].textContent).toBe("crown.svg");
     expect(links[1].href).toContain("/shop");
-    expect(links[1].textContent).toBe("Shop");
+    expect(links[1].textContent).toBe("SHOP");
+  });
+  test("has auth link", () => {
+    const links = screen.getAllByRole("link");
+    expect(links[2].href).toContain("/auth");
+    expect(links[2].textContent).toBe("SIGN IN");
   });
 });
