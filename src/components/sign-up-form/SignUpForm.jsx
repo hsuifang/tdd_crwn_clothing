@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FormInput from "../form-input/FormInput";
 import Button from "../button/button-component";
 import "./sign-up-form-styles.scss";
+
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   name: "",
@@ -52,8 +54,6 @@ const SignUpForm = () => {
       alert("Passwords do not match");
       return;
     }
-
-    console.log(formFields);
   };
 
   return (

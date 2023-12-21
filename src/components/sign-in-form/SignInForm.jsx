@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import FormInput from "../form-input/FormInput";
 import Button from "../button/button-component";
 import "./sign-in-form-styles.scss";
+import { UserContext } from "../../contexts/user.context";
 
 const defaultFormFields = {
   email: "",
@@ -25,6 +26,7 @@ const formInputs = [
 
 const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const { setCurrentUser } = useContext(UserContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -33,8 +35,12 @@ const SignInForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(formFields);
+    setCurrentUser({
+      id: "1",
+      email: formFields.email,
+      password: formFields.password,
+    });
+    setFormFields(defaultFormFields);
   };
 
   return (
